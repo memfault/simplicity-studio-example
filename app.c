@@ -38,9 +38,6 @@
 #ifdef SL_COMPONENT_CATALOG_PRESENT
 #include "sl_component_catalog.h"
 #endif // SL_COMPONENT_CATALOG_PRESENT
-#ifdef SL_CATALOG_CLI_PRESENT
-#include "sl_cli.h"
-#endif // SL_CATALOG_CLI_PRESENT
 #include "sl_sensor_rht.h"
 #include "sl_health_thermometer.h"
 #include "app.h"
@@ -310,22 +307,3 @@ static void app_periodic_timer_cb(app_timer_t *timer, void *data)
     app_log_warning("Failed to send temperature measurement indication\n");
   }
 }
-
-#ifdef SL_CATALOG_CLI_PRESENT
-void hello(sl_cli_command_arg_t *arguments)
-{
-  (void) arguments;
-  bd_addr address;
-  uint8_t address_type;
-  sl_status_t sc = sl_bt_system_get_identity_address(&address, &address_type);
-  app_assert_status(sc);
-  app_log_info("Bluetooth %s address: %02X:%02X:%02X:%02X:%02X:%02X\n",
-               address_type ? "static random" : "public device",
-               address.addr[5],
-               address.addr[4],
-               address.addr[3],
-               address.addr[2],
-               address.addr[1],
-               address.addr[0]);
-}
-#endif // SL_CATALOG_CLI_PRESENT
