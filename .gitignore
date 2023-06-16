@@ -3,7 +3,7 @@
 .settings/
 .uceditor/
 autogen/
-config/
+/config/
 
 # Ignore default build directory
 GNU\ ARM\ v10.3.1\ -\ Default/
