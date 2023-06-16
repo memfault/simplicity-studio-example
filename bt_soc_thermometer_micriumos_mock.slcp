@@ -29,13 +29,13 @@ component:
 - {id: iostream_retarget_stdio}
 - instance: [btn0]
   id: simple_button
-- {id: bluetooth_feature_gatt_server}
 - instance: [example]
   id: cli
+- {id: bluetooth_feature_gatt_server}
 - {id: in_place_ota_dfu}
 - {id: bluetooth_feature_sm}
-- {id: mpu}
 - {id: bluetooth_feature_legacy_advertiser}
+- {id: mpu}
 - {id: gatt_configuration}
 - {id: gatt_service_device_information}
 - {id: bluetooth_stack}
@@ -71,12 +71,12 @@ template_contribution:
 - condition: [cli]
   name: cli_command
   priority: 0
-  value: {name: export, group: mflt, handler: memfault_emblib_cli_export, help: Export
+  value: {name: export, group: mflt, handler: memfault_emlib_cli_export, help: Export
       data as base64 chunks}
 - condition: [cli]
   name: cli_command
   priority: 0
-  value: {name: get_core, group: mflt, handler: memfault_emblib_cli_get_core, help: Get
+  value: {name: get_core, group: mflt, handler: memfault_emlib_cli_get_core, help: Get
       current coredump state}
 - condition: [cli]
   name: cli_command
@@ -86,63 +86,63 @@ template_contribution:
 - condition: [cli]
   name: cli_command
   priority: 0
-  value: {name: get_device_info, group: mflt, handler: memfault_emblib_cli_get_device_info,
+  value: {name: get_device_info, group: mflt, handler: memfault_emlib_cli_get_device_info,
     help: Read device info structure}
 - condition: [cli]
   name: cli_command
   priority: 0
-  value: {name: assert, group: mflt_test_root, handler: memfault_emblib_cli_assert,
+  value: {name: assert, group: mflt_test_root, handler: memfault_emlib_cli_assert,
     help: Triggers assert to collect a coredump}
 - condition: [cli]
   name: cli_command
   priority: 0
-  value: {name: busfault, group: mflt_test_root, handler: memfault_emblib_cli_busfault,
+  value: {name: busfault, group: mflt_test_root, handler: memfault_emlib_cli_busfault,
     help: Triggers busfault to collect a coredump}
 - condition: [cli]
   name: cli_command
   priority: 0
-  value: {name: hang, group: mflt_test_root, handler: memfault_emblib_cli_hang, help: Triggers
+  value: {name: hang, group: mflt_test_root, handler: memfault_emlib_cli_hang, help: Triggers
       hang to collect a coredump}
 - condition: [cli]
   name: cli_command
   priority: 0
-  value: {name: hardfault, group: mflt_test_root, handler: memfault_emblib_cli_hardfault,
+  value: {name: hardfault, group: mflt_test_root, handler: memfault_emlib_cli_hardfault,
     help: Triggers hardfault to collect a coredump}
 - condition: [cli]
   name: cli_command
   priority: 0
-  value: {name: memmanage, group: mflt_test_root, handler: memfault_emblib_cli_memmanage,
+  value: {name: memmanage, group: mflt_test_root, handler: memfault_emlib_cli_memmanage,
     help: Triggers memory management fault to collect a coredump}
 - condition: [cli]
   name: cli_command
   priority: 0
-  value: {name: usagefault, group: mflt_test_root, handler: memfault_emblib_cli_usagefault,
+  value: {name: usagefault, group: mflt_test_root, handler: memfault_emlib_cli_usagefault,
     help: Triggers usage fault to collect a coredump}
 - condition: [cli]
   name: cli_command
   priority: 0
-  value: {name: reboot, group: mflt_test_root, handler: memfault_emblib_cli_reboot,
+  value: {name: reboot, group: mflt_test_root, handler: memfault_emlib_cli_reboot,
     help: Triggers reboot to test reboot reason tracking}
 - condition: [cli]
   name: cli_command
   priority: 0
-  value: {name: heartbeat, group: mflt_test_root, handler: memfault_emblib_cli_heartbeat,
+  value: {name: heartbeat, group: mflt_test_root, handler: memfault_emlib_cli_heartbeat,
     help: Trigger capture of heartbeat metrics}
 - condition: [cli]
   name: cli_command
   priority: 0
-  value: {name: logs, group: mflt_test_root, handler: memfault_emblib_cli_logs, help: Writes
+  value: {name: logs, group: mflt_test_root, handler: memfault_emlib_cli_logs, help: Writes
       logs to internal buffers}
 - condition: [cli]
   name: cli_command
   priority: 0
-  value: {name: log_capture, group: mflt_test_root, handler: memfault_emblib_cli_log_capture,
+  value: {name: log_capture, group: mflt_test_root, handler: memfault_emlib_cli_log_capture,
     help: Serializes current log buffer contents}
 - condition: [cli]
   name: cli_command
   priority: 0
-  value: {name: trace, group: mflt_test_root, handler: memfault_emblib_cli_trace,
-    help: Captures a trace event}
+  value: {name: trace, group: mflt_test_root, handler: memfault_emlib_cli_trace, help: Captures
+      a trace event}
 configuration:
 - {name: SL_STACK_SIZE, value: '2000'}
 - {name: SL_HEAP_SIZE, value: '12600'}

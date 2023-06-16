@@ -21,8 +21,19 @@
 		<nature>org.eclipse.cdt.core.cnature</nature>
 		<nature>com.silabs.ss.framework.ide.project.sls.core.SLSProjectNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
+		<nature>org.eclipse.cdt.core.ccnature</nature>
 	</natures>
 	<linkedResources>
+		<link>
+			<name>components</name>
+			<type>2</type>
+			<location>/Users/ericjohnson/work/src/memfault/sdk/embedded/components</location>
+		</link>
+		<link>
+			<name>emlib</name>
+			<type>2</type>
+			<location>/Users/ericjohnson/work/src/memfault/sdk/embedded/ports/emlib</location>
+		</link>
 		<link>
 			<name>gecko_sdk_4.3.0/hardware/board/inc/sl_board_control.h</name>
 			<type>1</type>
