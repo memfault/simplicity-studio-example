@@ -29,6 +29,7 @@ component:
 - {id: iostream_retarget_stdio}
 - instance: [btn0]
   id: simple_button
+- {id: emlib}
 - instance: [example]
   id: cli
 - {id: bluetooth_feature_gatt_server}

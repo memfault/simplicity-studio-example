@@ -1,0 +1,3 @@
+#pragma once
+
+#define MEMFAULT_PLATFORM_COREDUMP_STORAGE_RAM_SIZE (10 * 1024)

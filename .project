@@ -170,6 +170,11 @@
 			<locationURI>STUDIO_SDK_LOC/platform/common/src/sli_cmsis_os2_ext_task_register.c</locationURI>
 		</link>
 		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_acmp.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_acmp.h</locationURI>
+		</link>
+		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_assert.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_assert.h</locationURI>
@@ -215,9 +220,29 @@
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_core_generic.h</locationURI>
 		</link>
 		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_dbg.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_dbg.h</locationURI>
+		</link>
+		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_emu.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_emu.h</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_eusart.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_eusart.h</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_eusart_compat.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_eusart_compat.h</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_gpcrc.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_gpcrc.h</locationURI>
 		</link>
 		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_gpio.h</name>
@@ -225,9 +250,24 @@
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_gpio.h</locationURI>
 		</link>
 		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_i2c.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_i2c.h</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_iadc.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_iadc.h</locationURI>
+		</link>
+		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_ldma.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_ldma.h</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_letimer.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_letimer.h</locationURI>
 		</link>
 		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_msc.h</name>
@@ -240,6 +280,16 @@
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_msc_compat.h</locationURI>
 		</link>
 		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_opamp.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_opamp.h</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_pcnt.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_pcnt.h</locationURI>
+		</link>
+		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_prs.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_prs.h</locationURI>
@@ -250,9 +300,19 @@
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_ramfunc.h</locationURI>
 		</link>
 		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_rmu.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_rmu.h</locationURI>
+		</link>
+		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_se.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_se.h</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_smu.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_smu.h</locationURI>
 		</link>
 		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_syscfg.h</name>
@@ -280,14 +340,29 @@
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_usart.h</locationURI>
 		</link>
 		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_vdac.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_vdac.h</locationURI>
+		</link>
+		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_version.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_version.h</locationURI>
 		</link>
 		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/inc/em_wdog.h</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/em_wdog.h</locationURI>
+		</link>
+		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/inc/sli_em_cmu.h</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/inc/sli_em_cmu.h</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/src/em_acmp.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_acmp.c</locationURI>
 		</link>
 		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/src/em_burtc.c</name>
@@ -305,9 +380,24 @@
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_core.c</locationURI>
 		</link>
 		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/src/em_dbg.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_dbg.c</locationURI>
+		</link>
+		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/src/em_emu.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_emu.c</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/src/em_eusart.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_eusart.c</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/src/em_gpcrc.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_gpcrc.c</locationURI>
 		</link>
 		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/src/em_gpio.c</name>
@@ -315,9 +405,24 @@
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_gpio.c</locationURI>
 		</link>
 		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/src/em_i2c.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_i2c.c</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/src/em_iadc.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_iadc.c</locationURI>
+		</link>
+		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/src/em_ldma.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_ldma.c</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/src/em_letimer.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_letimer.c</locationURI>
 		</link>
 		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/src/em_msc.c</name>
@@ -325,9 +430,24 @@
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_msc.c</locationURI>
 		</link>
 		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/src/em_opamp.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_opamp.c</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/src/em_pcnt.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_pcnt.c</locationURI>
+		</link>
+		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/src/em_prs.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_prs.c</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/src/em_rmu.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_rmu.c</locationURI>
 		</link>
 		<link>
 			<name>gecko_sdk_4.3.0/platform/emlib/src/em_se.c</name>
@@ -348,6 +468,16 @@
 			<name>gecko_sdk_4.3.0/platform/emlib/src/em_usart.c</name>
 			<type>1</type>
 			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_usart.c</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/src/em_vdac.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_vdac.c</locationURI>
+		</link>
+		<link>
+			<name>gecko_sdk_4.3.0/platform/emlib/src/em_wdog.c</name>
+			<type>1</type>
+			<locationURI>STUDIO_SDK_LOC/platform/emlib/src/em_wdog.c</locationURI>
 		</link>
 		<link>
 			<name>gecko_sdk_4.3.0/platform/peripheral/inc/peripheral_sysrtc.h</name>

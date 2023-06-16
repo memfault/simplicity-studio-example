@@ -28,6 +28,7 @@
 //!    }
 
 #include "memfault/components.h"
+#include "memfault/ports/reboot_reason.h"
 #include "em_device.h"
 #include "app_log.h"
 #include <cpu/include/cpu.h>
@@ -38,6 +39,9 @@
 #include <stdint.h>
 #include <string.h>
 #include <stdio.h>
+
+MEMFAULT_PUT_IN_SECTION(".mflt_reboot_tracking.noinit")
+static uint8_t s_reboot_tracking[MEMFAULT_REBOOT_TRACKING_REGION_SIZE];
 
 #if !MEMFAULT_PLATFORM_COREDUMP_STORAGE_RAM_CUSTOM
 
@@ -187,8 +191,7 @@ size_t memfault_platform_sanitize_address_range(void *start_addr, size_t desired
     uint32_t start_addr;
     size_t length;
   } s_mcu_mem_regions[] = {
-      // !FIXME: Update with list of valid memory banks to collect in a coredump
-      {.start_addr = 0x00000000, .length = 0xFFFFFFFF},
+      {.start_addr = 0x20000000, .length = 0x40000},
   };
 
   for (size_t i = 0; i < MEMFAULT_ARRAY_SIZE(s_mcu_mem_regions); i++)
@@ -209,32 +212,36 @@ void memfault_platform_log(eMemfaultPlatformLogLevel level, const char *fmt, ...
   va_list args;
   va_start(args, fmt);
 
+  char log_buf[128];
+  vsnprintf(log_buf, sizeof(log_buf), fmt, args);
+
+  const char *lvl_str;
   switch (level)
   {
   case kMemfaultPlatformLogLevel_Debug:
-    app_log_debug(fmt, args);
-    app_log_nl_debug();
+    lvl_str = "D";
     break;
 
   case kMemfaultPlatformLogLevel_Info:
-    app_log_info(fmt, args);
-    app_log_nl_info();
+    lvl_str = "I";
     break;
 
   case kMemfaultPlatformLogLevel_Warning:
-    app_log_warning(fmt, args);
-    app_log_nl_warning();
+    lvl_str = "W";
     break;
 
   case kMemfaultPlatformLogLevel_Error:
-    app_log_error(fmt, args);
-    app_log_nl_error();
+    lvl_str = "E";
     break;
+
   default:
+    lvl_str = "D";
     break;
   }
 
-  va_end(args);
+  vsnprintf(log_buf, sizeof(log_buf), fmt, args);
+
+  printf("[%s] MFLT: %s\n", lvl_str, log_buf);
 }
 
 void memfault_platform_log_raw(const char *fmt, ...)
@@ -255,6 +262,13 @@ uint64_t memfault_platform_get_time_since_boot_ms(void)
   timestamp = CPU_TS_Get32();
   usecs = CPU_TS32_to_uSec(timestamp);
   return usecs / 1000;
+}
+
+void memfault_platform_reboot_tracking_boot(void)
+{
+  sResetBootupInfo reset_info = {0};
+  memfault_reboot_reason_get(&reset_info);
+  memfault_reboot_tracking_boot(s_reboot_tracking, &reset_info);
 }
 
 //! !FIXME: This function _must_ be called by your main() routine prior
@@ -280,10 +294,10 @@ int memfault_platform_boot(void)
   memfault_reboot_tracking_collect_reset_info(evt_storage);
 
   // configure the metrics component to store into the buffer
-  sMemfaultMetricBootInfo boot_info = {
-      .unexpected_reboot_count = memfault_reboot_tracking_get_crash_count(),
-  };
-  memfault_metrics_boot(evt_storage, &boot_info);
+  //  sMemfaultMetricBootInfo boot_info = {
+  //      .unexpected_reboot_count = memfault_reboot_tracking_get_crash_count(),
+  //  };
+  //  memfault_metrics_boot(evt_storage, &boot_info);
 
   MEMFAULT_LOG_INFO("Memfault Initialized!");
 
