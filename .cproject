@@ -421,7 +421,7 @@
 					</folderInfo>
 					<sourceEntries>
 						<entry excluding="emlib|components|memfault_ports_include|memfault_emlib|memfault_components|memfault_ports_emlib|.trash" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name=""/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="components"/>
+						<entry excluding="_feature_stubs/|_sortme/|http/" flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="components"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="emlib"/>
 					</sourceEntries>
 				</configuration>
