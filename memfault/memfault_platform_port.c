@@ -35,8 +35,6 @@
 #include "cpu/include/cpu.h"
 #include "kernel/include/os.h"
 
-#if MEMFAULT_PLATFORM_COREDUMP_STORAGE_USE_RAM
-
 #include <stdbool.h>
 #include <stdint.h>
 #include <string.h>
@@ -44,6 +42,8 @@
 
 MEMFAULT_PUT_IN_SECTION(".mflt_reboot_tracking.noinit")
 static uint8_t s_reboot_tracking[MEMFAULT_REBOOT_TRACKING_REGION_SIZE];
+
+#if MEMFAULT_PLATFORM_COREDUMP_STORAGE_USE_RAM
 
 #if !MEMFAULT_PLATFORM_COREDUMP_STORAGE_RAM_CUSTOM
 
@@ -58,7 +58,9 @@ static uint32_t s_ram_backed_coredump_region[MEMFAULT_PLATFORM_COREDUMP_STORAGE_
 
 #define MEMFAULT_PLATFORM_COREDUMP_RAM_START_ADDR ((uint8_t *)&s_ram_backed_coredump_region[0])
 
-#endif /* MEMFAULT_PLATFORM_COREDUMP_STORAGE_RAM_CUSTOM */
+#endif /* !MEMFAULT_PLATFORM_COREDUMP_STORAGE_RAM_CUSTOM */
+
+#endif /* MEMFAULT_PLATFORM_COREDUMP_STORAGE_USE_RAM */
 
 static OS_TMR metrics_timer = {0};
 
@@ -80,6 +82,8 @@ const sMfltCoredumpRegion *memfault_platform_coredump_get_regions(
   return &s_coredump_regions[0];
 }
 #endif
+
+#if MEMFAULT_PLATFORM_COREDUMP_STORAGE_USE_RAM
 
 void memfault_platform_coredump_storage_get_info(sMfltCoredumpStorageInfo *info)
 {
