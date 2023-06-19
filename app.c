@@ -41,6 +41,7 @@
 #include "sl_sensor_rht.h"
 #include "sl_health_thermometer.h"
 #include "app.h"
+#include "memfault/components.h"
 
 // Connection handle.
 static uint8_t app_connection = 0;
@@ -60,6 +61,46 @@ static void app_periodic_timer_cb(app_timer_t *timer, void *data);
 /**************************************************************************//**
  * Application Init.
  *****************************************************************************/
+
+#define APP_TASK_PRIO 21u
+#define APP_TASK_STACK_SIZE 256u /*   Stack size in CPU_STK.         */
+
+static OS_TCB s_app_task_tcb;
+static CPU_STK s_app_task_stack[APP_TASK_STACK_SIZE];
+
+static void app_task(void *p_arg)
+{
+  (void)p_arg;
+  RTOS_ERR err;
+  memfault_platform_boot();
+  while (true)
+  {
+    uint32_t os_ticks = (OSCfg_TickRate_Hz * 60);
+    OSTimeDly(os_ticks, OS_OPT_TIME_DLY, &err);
+    EFM_ASSERT((RTOS_ERR_CODE_GET(err) == RTOS_ERR_NONE));
+  }
+}
+
+static void app_task_create(void)
+{
+  RTOS_ERR err;
+
+  OSTaskCreate(&s_app_task_tcb,             /* Pointer to the task's TCB.  */
+               "app_task",                  /* Name to help debugging.     */
+               app_task,                    /* Pointer to the task's code. */
+               DEF_NULL,                    /* Pointer to task's argument. */
+               APP_TASK_PRIO,               /* Task's priority.            */
+               s_app_task_stack,            /* Pointer to base of stack.   */
+               (APP_TASK_STACK_SIZE / 10u), /* Stack limit, from base.     */
+               APP_TASK_STACK_SIZE,         /* Stack size, in CPU_STK.     */
+               0u,                          /* Messages in task queue.     */
+               0u,                          /* Round-Robin time quanta.    */
+               DEF_NULL,                    /* External TCB data.          */
+               OS_OPT_TASK_STK_CHK,         /* Task options.               */
+               &err);
+  MEMFAULT_ASSERT(RTOS_ERR_CODE_GET(err) == RTOS_ERR_NONE);
+}
+
 SL_WEAK void app_init(void)
 {
   sl_status_t sc;
@@ -70,6 +111,7 @@ SL_WEAK void app_init(void)
     app_log_warning("Relative Humidity and Temperature sensor initialization failed.");
     app_log_nl();
   }
+  app_task_create();
 }
 
 #ifndef SL_CATALOG_KERNEL_PRESENT
