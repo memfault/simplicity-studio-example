@@ -31,7 +31,8 @@
 #include "memfault/ports/reboot_reason.h"
 #include "em_device.h"
 #include "app_log.h"
-#include <cpu/include/cpu.h>
+#include "cpu/include/cpu.h"
+#include "kernel/include/os.h"
 
 #if MEMFAULT_PLATFORM_COREDUMP_STORAGE_USE_RAM
 
@@ -57,6 +58,8 @@ static uint32_t s_ram_backed_coredump_region[MEMFAULT_PLATFORM_COREDUMP_STORAGE_
 #define MEMFAULT_PLATFORM_COREDUMP_RAM_START_ADDR ((uint8_t *)&s_ram_backed_coredump_region[0])
 
 #endif /* MEMFAULT_PLATFORM_COREDUMP_STORAGE_RAM_CUSTOM */
+
+static OS_TMR metrics_timer = {0};
 
 #if !MEMFAULT_PLATFORM_COREDUMP_STORAGE_REGIONS_CUSTOM
 //! Collect the active stack as part of the coredump capture.
@@ -271,6 +274,32 @@ void memfault_platform_reboot_tracking_boot(void)
   memfault_reboot_tracking_boot(s_reboot_tracking, &reset_info);
 }
 
+static void prv_timer_callback(void *p_tmr, void *p_arg) {
+  (void)p_tmr;
+
+  MemfaultPlatformTimerCallback *callback = (MemfaultPlatformTimerCallback *)p_arg;
+  if (callback) {
+    callback();
+  }
+}
+
+bool memfault_platform_metrics_timer_boot(uint32_t period_sec, MemfaultPlatformTimerCallback *callback)
+{
+  RTOS_ERR err;
+
+  // uC-OS defaults to 10 Hz when OSCfg_TmrTaskRate_Hz is not set
+  uint32_t timer_task_rate_hz = OSCfg_TmrTaskRate_Hz > 0 ? OSCfg_TmrTaskRate_Hz : 10;
+  uint32_t ticks = period_sec * timer_task_rate_hz;
+
+  OSTmrCreate(&metrics_timer, "Metrics Timer", 0, ticks, OS_OPT_TMR_PERIODIC, prv_timer_callback, callback, &err);
+  MEMFAULT_ASSERT(RTOS_ERR_CODE_GET(err) == RTOS_ERR_NONE);
+
+  OSTmrStart(&metrics_timer, &err);
+  MEMFAULT_ASSERT(RTOS_ERR_CODE_GET(err) == RTOS_ERR_NONE);
+
+  return true;
+}
+
 //! !FIXME: This function _must_ be called by your main() routine prior
 //! to starting an RTOS or baremetal loop.
 int memfault_platform_boot(void)
@@ -294,10 +323,10 @@ int memfault_platform_boot(void)
   memfault_reboot_tracking_collect_reset_info(evt_storage);
 
   // configure the metrics component to store into the buffer
-  //  sMemfaultMetricBootInfo boot_info = {
-  //      .unexpected_reboot_count = memfault_reboot_tracking_get_crash_count(),
-  //  };
-  //  memfault_metrics_boot(evt_storage, &boot_info);
+   sMemfaultMetricBootInfo boot_info = {
+       .unexpected_reboot_count = memfault_reboot_tracking_get_crash_count(),
+   };
+   memfault_metrics_boot(evt_storage, &boot_info);
 
   MEMFAULT_LOG_INFO("Memfault Initialized!");
 
