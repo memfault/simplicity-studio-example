@@ -160,10 +160,10 @@ void memfault_platform_get_device_info(sMemfaultDeviceInfo *info)
       // An ID that uniquely identifies the device in your fleet
       // (i.e serial number, mac addr, chip id, etc)
       // Regular expression defining valid device serials: ^[-a-zA-Z0-9_]+$
-      .device_serial = "DEMOSERIAL",
+      .device_serial = "efr32mg24-dev-kit",
       // A name to represent the firmware running on the MCU.
       // (i.e "ble-fw", "main-fw", or a codename for your project)
-      .software_type = "app-fw",
+      .software_type = "efr32mg24-fw",
       // The version of the "software_type" currently running.
       // "software_type" + "software_version" must uniquely represent
       // a single binary
