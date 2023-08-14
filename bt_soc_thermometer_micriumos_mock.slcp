@@ -23,7 +23,7 @@ include:
 - path: ''
   file_list:
   - {path: app.h}
-sdk: {id: gecko_sdk, version: 4.3.0}
+sdk: {id: gecko_sdk, version: 4.3.1}
 toolchain_settings: []
 component:
 - {id: iostream_retarget_stdio}
@@ -165,6 +165,7 @@ configuration:
 - {name: SL_CLI_EXAMPLE_TASK_STACK_SIZE, value: '250'}
 - {name: SL_CLI_INPUT_BUFFER_SIZE, value: '32'}
 - {name: SL_CLI_NUM_HISTORY_BYTES, value: '0'}
+- {name: CPU_CFG_TS_32_EN, value: '1'}
 - condition: [psa_crypto]
   name: SL_PSA_KEY_USER_SLOT_COUNT
   value: '0'

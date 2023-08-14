@@ -1,6 +1,6 @@
 # Memfault Simplicity Studio Example
 
-This repo contains a simple example of integrating Memfault with Simplicity Studio, the Gecko SDK (v4.3.0 tested), and Micrium. The application aws written for the EFR32MG24 dev kit. The code was adapted from the example `bt_soc_thermometer_micriumos_mock`. The application contains the following features:
+This repo contains a simple example of integrating Memfault with Simplicity Studio, the Gecko SDK (v4.3.1 tested), and Micrium. The application aws written for the EFR32MG24 dev kit. The code was adapted from the example `bt_soc_thermometer_micriumos_mock`. The application contains the following features:
 
 * Reboot reason tracking
 * Micrium port integration
